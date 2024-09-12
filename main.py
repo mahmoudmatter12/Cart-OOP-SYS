@@ -14,15 +14,15 @@ email_completer = WordCompleter(get_emails(), ignore_case=True)
 
 def main():
     Clean()
-    print("Welcome to our system!")
-    print("Please choose an option below:\n")
+    print(Fore.BLUE+"Welcome to our system!"+Style.RESET_ALL)
+    print(Fore.BLUE+"Please choose an option below:\n"+Style.RESET_ALL)
     while True:
         print("1. Register \t 2. Login \t 3. Exit")
-        print(40 * '-')
+        print(Fore.MAGENTA + 40 * '-' + Style.RESET_ALL)
 
         choice = input("Enter your choice: ")
         while choice not in ["1", "2", "3"]:
-            print("Invalid choice. Please try again.")
+            print(Fore.RED + "Invalid choice. Please try again." + Style.RESET_ALL)
             choice = input("Enter your choice: ")
 
         if choice == "1":
@@ -30,35 +30,35 @@ def main():
             f_name = input("Enter your first name: ")
             l_name = input("Enter your last name: ")
             while not User.validate_name(f_name, l_name):
-                print("First name and last name should have at least 2 characters.")
+                print(Fore.RED + "First name and last name should have at least 2 characters." + Style.RESET_ALL)
                 f_name = input("Enter your first name again: ")
                 l_name = input("Enter your last name again: ")
 
             email = input("Enter your email: ")
             while User.in_validate_email(email):
                 print("Please enter your email again: ")
-                email = input("Enter your email again: ")
+                print(Fore.RED + "Please enter your email again: " + Style.RESET_ALL)
             user = find_user(email)
             while user is not None:
-                print("User with this email already exists.")
+                print(Fore.RED + "User with this email already exists." + Style.RESET_ALL)
                 email = input("Enter your email again: ")
                 user = find_user(email)
 
             password = input_password()
             while not User.validate_password(password):
-                print("Password should have at least 8 characters")
+                print(Fore.RED + "Password should have at least 8 characters" + Style.RESET_ALL)
                 password = input_password("Enter your password again: ")
 
             phone_number = input("Enter your phone number: ")
             while not User.validate_phone_number(phone_number):
-                print("Phone number should have 11 characters")
+                print(Fore.RED + "Phone number should have 11 characters" + Style.RESET_ALL)
                 phone_number = input("Enter your phone number again: ")
 
             user = User(f_name, l_name, email, password, phone_number)
             Clean()
             user.save()
             if user.admin:
-                print("You are registered as an Admin.")
+                print(Fore.GREEN + "You are registered as an Admin." + Style.RESET_ALL)
                 Greeting_Admin(user.f_name)
                 admin = Admin(
                     user.f_name,
@@ -72,7 +72,7 @@ def main():
                 adminMenu(admin)
             else:
                 Clean()
-                print("You are registered successfully.")
+                print(Fore.GREEN + "You are registered successfully." + Style.RESET_ALL)
                 Regular_user = regular_user(
                     user.f_name,
                     user.l_name,
@@ -95,18 +95,18 @@ def main():
 
 def adminMenu(admin):
     print(f"Welcome to Admin Panel, {admin.name}!")
-    print((len("Welcome to Admin Panel, {admin.name}!")+len({admin.name})-2)*'-')
+    print(Fore.MAGENTA + (len("Welcome to Admin Panel, {admin.name}!") + len({admin.name}) - 2) * '-' + Style.RESET_ALL)
     while True:
-        print("1. Make a user an Admin\t\t2. Remove a user as an Admin\n")
-        print("3. View all users\t\t4. View stats\n")
-        print("5. Search for a user\t\t6. Delete a user\n")
-        print("7. View your profile\t\t8. Change your password or User password\n")
-        print("9. Add a new user\t\t10. Exit")
-        print((len("9. Add a new user\t\t10. Exit")+8+4)*'-')
+        print(Fore.BLUE+"1. Make a user an Admin\t\t2. Remove a user as an Admin\n"+Style.RESET_ALL)
+        print(Fore.BLUE+"3. View all users\t\t4. View stats\n"+Style.RESET_ALL)
+        print(Fore.BLUE+"5. Search for a user\t\t6. Delete a user\n"+Style.RESET_ALL)
+        print(Fore.BLUE+"7. View your profile\t\t8. Change your password or User password\n"+Style.RESET_ALL)
+        print(Fore.BLUE+"9. Add a new user\t\t10. Exit")
+        print(Fore.MAGENTA + (len("9. Add a new user\t\t10. Exit") + 8 + 4) * '-' + Style.RESET_ALL)
 
         choice = input("Enter your choice: ")
         while choice not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]:
-            print("Invalid choice. Please try again.")
+            print(Fore.RED + "Invalid choice. Please try again." + Style.RESET_ALL)
             choice = input("Enter your choice: ")
 
         if choice == "1":
@@ -141,24 +141,38 @@ def adminMenu(admin):
             print("Back to login screen.")
             break
 
+
 def userMenu(regular_user):
     print(f"Welcome {regular_user.name} on User's Panel !")
-    print(26*"-" + len(regular_user.name)*"-")
+    print(Fore.MAGENTA + 26 * '-' + len(regular_user.name) * '-' + Style.RESET_ALL)
     while True:
-        print("1. View your profile")
-        print("2. Edit your profile")
-        print("3. Add an item to the cart")
-        print("4. Remove an item from the cart")
-        print("5. Update quantity of an item in the cart")
-        print("6. View your cart")
-        print(Fore.LIGHTCYAN_EX + "7. Calculate Total" + Style.RESET_ALL)
-        print(Fore.LIGHTCYAN_EX + "8. Number of Items" + Style.RESET_ALL)
-        print(Fore.LIGHTCYAN_EX + "9. Clear Cart" + Style.RESET_ALL)
-        print("10. Check out")
-        print(Fore.LIGHTCYAN_EX + "11. Exit" + Style.RESET_ALL)
+        print(Fore.BLUE+"1. View your profile" + Style.RESET_ALL)
+        print(Fore.BLUE+"2. Edit your profile"+ Style.RESET_ALL)
+        print(Fore.BLUE+"3. Add an item to the cart"+ Style.RESET_ALL)
+        print(Fore.BLUE+"4. Remove an item from the cart"+ Style.RESET_ALL)
+        print(Fore.BLUE+"5. Update quantity of an item in the cart"+ Style.RESET_ALL)
+        print(Fore.BLUE+"6. View your cart"+ Style.RESET_ALL)
+        print(Fore.BLUE + "7. Calculate Total" + Style.RESET_ALL)
+        print(Fore.BLUE + "8. Number of Items" + Style.RESET_ALL)
+        print(Fore.BLUE + "9. Clear Cart" + Style.RESET_ALL)
+        print(Fore.BLUE+"10. Check out"+ Style.RESET_ALL)
+        print(Fore.BLUE + "11. Exit" + Style.RESET_ALL)
 
         choice = input("Enter your choice: ")
-        while choice not in ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "13"]:
+        while choice not in [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "13",
+        ]:
             print("Invalid choice. Please try again.")
             choice = input("Enter your choice: ")
 
@@ -167,11 +181,11 @@ def userMenu(regular_user):
             regular_user.view_profile()
         elif choice == "2":
             Clean()
-            
+
             regular_user.edit_profile()
         elif choice == "3":
             Clean()
-            
+
             name = input(
                 Fore.YELLOW + "Enter Product Name: " + Style.RESET_ALL
             ).capitalize()
@@ -211,24 +225,28 @@ def userMenu(regular_user):
 
         elif choice == "4":
             Clean()
-            
+
             name = input(
                 Fore.YELLOW + "Enter Product Name to remove: " + Style.RESET_ALL
             ).capitalize()
             while not name.isalpha():
                 name = input(
-                    Fore.RED + "Invalid name, Enter Product Name to remove: " + Style.RESET_ALL
+                    Fore.RED
+                    + "Invalid name, Enter Product Name to remove: "
+                    + Style.RESET_ALL
                 )
             regular_user.remove_item(name)
-        elif choice =='5':
+        elif choice == "5":
             Clean()
-            
+
             name = input(
                 Fore.YELLOW + "Enter Product Name to update: " + Style.RESET_ALL
             ).capitalize()
             while not name.isalpha():
                 name = input(
-                    Fore.RED + "Invalid name, Enter Product Name to update: " + Style.RESET_ALL
+                    Fore.RED
+                    + "Invalid name, Enter Product Name to update: "
+                    + Style.RESET_ALL
                 )
             new_quantity = int(
                 input(Fore.YELLOW + "Enter new Product Quantity: " + Style.RESET_ALL)
@@ -245,32 +263,35 @@ def userMenu(regular_user):
                         + "Invalid quantity, Enter Product quantity: "
                         + Style.RESET_ALL
                     )
-            regular_user.update_quantity(name, new_quantity, regular_user.get_quantity(name))
+            regular_user.update_quantity(
+                name, new_quantity, regular_user.get_quantity(name)
+            )
         elif choice == "6":
             Clean()
             regular_user.view_cart()
-            
+
         elif choice == "7":
             Clean()
             print(f"Total Price: {regular_user.calc_total_price()}\n")
-            
+
         elif choice == "8":
             Clean()
-            
+
             print(f"Number of Items: {regular_user.calc_number_of_items()}\n")
         elif choice == "9":
             Clean()
-            
+
             regular_user.clear_cart()
         elif choice == "10":
             Clean()
-            
+
             Receipt(regular_user, regular_user.name)
         elif choice == "11":
             Clean()
-            
+
             print("thank you for using or system ... going back to login screen\n")
             break
+
 
 def login():
     Clean()
@@ -294,7 +315,7 @@ def login():
         if user is not None and user["password"] == password:
             password_correct = True
         else:
-            print("Invalid password.")
+            print(Fore.RED + "Invalid password." + Style.RESET_ALL)
             choice = input("Do you want to rewrite the password? (y/n): ")
             while choice.lower() not in ["y", "n"]:
                 print("Invalid choice. Please try again.")
@@ -306,10 +327,10 @@ def login():
     if user is None:
         print("User not found.")
     elif user["password"] != password:
-        print("Invalid password.")
+        print(Fore.RED + "Invalid password." + Style.RESET_ALL)
     else:
         if user["admin"]:
-            print("You are logged in as an Admin.")
+            print(Fore.GREEN + "You are logged in as an Admin." + Style.RESET_ALL)
             f_name = user["name"].split()[0]
             l_name = user["name"].split()[1]
             admin1 = Admin(
@@ -325,7 +346,7 @@ def login():
         else:
             f_name = user["name"].split()[0]
             l_name = user["name"].split()[1]
-            Regular_user =regular_user (
+            Regular_user = regular_user(
                 f_name,
                 l_name,
                 user["email"],
@@ -334,14 +355,9 @@ def login():
                 user["id"],
                 user["admin"],
             )
-            
+
             userMenu(Regular_user)
-            print("You are logged in as a regular user.")
-            
-
-
-
-
+            print(Fore.GREEN + "You are logged in as a regular user." + Style.RESET_ALL)
 
 
 if __name__ == "__main__":

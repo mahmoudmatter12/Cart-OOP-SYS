@@ -34,5 +34,14 @@
     "id": 6473,
     "admin": false,
     "products": []
+  },
+  {
+    "name": "mahmoud gama;",
+    "email": "123@g.",
+    "password": "123123123",
+    "phone_number": "12312312312",
+    "id": 5252,
+    "admin": false,
+    "products": []
   }
 ]

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "test test",
+    "email": "m2@.",
+    "password": "lollollol",
+    "phone_number": "12312312312",
+    "id": 7850,
+    "admin": false,
+    "products": []
+  },
+  {
+    "name": "admin admin",
+    "email": "admin",
+    "password": "123123123",
+    "phone_number": "12312312312",
+    "id": 4283,
+    "admin": true,
+    "products": []
+  },
+  {
+    "name": "test test",
+    "email": "m1@.",
+    "password": "123123123",
+    "phone_number": "12312312312",
+    "id": 2914,
+    "admin": false,
+    "products": []
+  },
+  {
+    "name": "mahmoud gamal",
+    "email": "m4@.",
+    "password": "123123123",
+    "phone_number": "12312312312",
+    "id": 6473,
+    "admin": false,
+    "products": []
+  }
+]

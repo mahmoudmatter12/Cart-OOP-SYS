@@ -36,8 +36,8 @@ def main():
 
             email = input("Enter your email: ")
             while User.in_validate_email(email):
-                print("Please enter your email again: ")
-                print(Fore.RED + "Please enter your email again: " + Style.RESET_ALL)
+                print(Fore.RED + "Invalid email format. Please enter your email again: " + Style.RESET_ALL)
+                email = input("Enter your email again: ")
             user = find_user(email)
             while user is not None:
                 print(Fore.RED + "User with this email already exists." + Style.RESET_ALL)

@@ -43,5 +43,21 @@
     "id": 5252,
     "admin": false,
     "products": []
+  },
+  {
+    "name": "mohamed ashraf",
+    "email": "sdfsy2@gamil.com",
+    "password": "121212005",
+    "phone_number": "01155823595",
+    "id": 5708,
+    "admin": false,
+    "products": [
+      {
+        "product": "Fmvfe",
+        "quantity": 100,
+        "price": 12000000.0,
+        "total": 1200000000.0
+      }
+    ]
   }
 ]
